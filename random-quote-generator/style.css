@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css?family=Comfortaa");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css");
+body {
+  background-color: #ffc700;
+  color: #ffc700;
+}
+
+.quote-box {
+  position: relative;
+  display: table;
+  margin: 8% auto auto auto;
+  width: 450px;
+  padding: 40px 50px;
+  background-color: #fff;
+  border-radius: 3px;
+}
+.quote-box .quote-text {
+  text-align: center;
+  width: 450px;
+  font-weight: 500;
+  font-size: 1.75em;
+  font-family: 'Comfortaa', sans-serif;
+}
+.quote-box .quote-author {
+  text-align: right;
+  width: 450px;
+  font-size: 1em;
+  padding-top: 20px;
+  font-family: 'Comfortaa', sans-serif;
+  height: auto;
+}
+.quote-box .buttons {
+  margin: auto;
+  display: block;
+}
+.quote-box .buttons .button {
+  margin-top: 30px;
+  background-color: #ffc700;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 0.85em;
+  font-family: 'Comfortaa', sans-serif;
+  padding: 8px 18px 8px 18px;
+  cursor: pointer;
+}
+.quote-box .buttons .button:hover {
+  opacity: 0.9;
+}
+.quote-box .buttons .button#tweet-quote {
+  float: left;
+  padding: 0px;
+  padding-top: 8px;
+  text-align: center;
+  height: 30px;
+  width: 40px;
+  font-size: 1.2em;
+}
+.quote-box .buttons .button#new-quote {
+  float: right;
+}
+
+.footer {
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.8em;
+  font-family: 'Comfortaa', sans-serif;
+}
+.footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
