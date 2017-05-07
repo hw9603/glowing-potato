@@ -78,7 +78,9 @@ function quote() {
 		backgroundColor: colors[c_idx]
 	}, 1000);
 }
-
+$(document).ready(function(){
+	quote();
+});
 
 
 
