@@ -3,7 +3,7 @@ var app = angular.module('weather', []);
 app.factory('api', function($http){
 	var obj = {};
 	
-	obj.getLoc = function(){
+	/*obj.getLoc = function(){
 		return $http.jsonp("http://ipinfo.io/json?callback=JSON_CALLBACK");
 	}
 	
@@ -11,7 +11,12 @@ app.factory('api', function($http){
 		var front = "http://api.openweathermap.org/data/2.5/weather?q=";
 		var back = "&units=metric&APPID=061f24cf3cde2f60644a8240302983f2&callback=JSON_CALLBACK";
 		return $http.jsonp(front + loc + back);
-	};
+	};*/
+
+	obj.getWeather = function(loc){
+		var front = "https://api.darksky.net/forecast/c5cf27d1be7c27634bf9eb9eb1e04159/";
+		return $http.jsonp(front + loc + "/");
+	}
 	return obj;
 });
 
@@ -83,23 +88,31 @@ app.controller('myCtrl', function($scope, api) {
 						iconShow(des);
 				}
 		}
-		/*if (navigator.geolocation) {
+
+		function go(pos){
+		  	$.ajax({
+			    type: "GET",
+			    dataType: 'jsonp',
+			    cache: false,
+			    url: "https://api.forecast.io/forecast/5ac8fd301a1720fdf2c06ac555a2d2a2/" + pos,
+			    success: function(data)
+			    {
+			      $scope.temperature = data.currently.temperature;
+			      $scope.type = data.currently.icon;
+			    }
+			});
+		}
+
+		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(function(position){
 				$scope.$apply(function(){
-					$scope.position = position.coords.latitude + "," + position.coords.longitude;
+					var pos = position.coords.latitude + "," + position.coords.longitude;
+					console.log("debug: " + pos);
+					go(pos);
 				});
 			});
-		}*/
-		api.getLoc().success(function(data){
-			$scope.city = data.city;
-			$scope.country = data.country;
-			api.getWeather(data.city).success(function(data){
-				$scope.temperature = Math.round(data.main.temp);
-				$scope.type = data.weather[0].main;
-				var des = $scope.type.toLowerCase();
-				changebackground(des);
-			});
-		});
+		}
+		
 		
 		$scope.search = function() {
 			api.getWeather($scope.city).success(function(data){
