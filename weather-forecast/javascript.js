@@ -1,3 +1,4 @@
+
 /* Work only in HTTP */
 var app = angular.module('weather', []);
 app.factory('api', function($http){
